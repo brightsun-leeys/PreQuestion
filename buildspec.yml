@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    _PROJECT_NAME: "PreQuestion"
+    _PROJECT_NAME: "prequestion"
     _ECR_NAME: "user21-prequestion-repo"
     _NAMESPACE: "skcc-ns"
     _AWS_REGION: "us-east-1"
