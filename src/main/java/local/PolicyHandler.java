@@ -36,7 +36,7 @@ public class PolicyHandler{
             // 동기식 테스트를 위해서 기존에 있는 호출을 그대로 이용
             // 검진 요청함 ( Req / Res : 동기 방식 호출)
             local.external.Hospital hospital = new local.external.Hospital();
-            hospital.setHospitalId( hospital.getHospitalId() );
+            hospital.setHospitalId( Long.parseLong( reservationCompleted.getHospitalId()) );
             // mappings goes here
             PreQuestionApplication.applicationContext.getBean(local.external.HospitalService.class)
                     .screeningRequest(hospital.getHospitalId(),hospital);
