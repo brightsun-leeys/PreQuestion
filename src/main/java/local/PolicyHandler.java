@@ -29,7 +29,11 @@ public class PolicyHandler{
             System.out.println("##### 예약 확정으로 인한 사전 문진표 발송: " + reservationCompleted.toJson());
             if (reservationCompleted.getCustNm().equals("TEST")) {
                 Canceled canceled = new Canceled();
-                BeanUtils.copyProperties(this, canceled);
+                canceled.setHospitalId(reservationCompleted.getHospitalId());
+                canceled.setId(reservationCompleted.getId());
+                canceled.setCustNm(reservationCompleted.getCustNm() );
+                canceled.setStatus("CANCELED");
+//                BeanUtils.copyProperties(this, canceled);
                 canceled.publishAfterCommit();
             }
 
