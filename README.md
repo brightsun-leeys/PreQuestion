@@ -73,7 +73,7 @@
 
 ## Event Storming 결과
 
-![그림2](https://user-images.githubusercontent.com/67453893/92060804-a629ec80-edcf-11ea-8bd9-11408105abf6.png)
+![그림7](https://user-images.githubusercontent.com/67453893/92063643-9d88e480-edd6-11ea-8b75-42f712d045b7.png)
 
 ### 이벤트 도출
 ![그림2](https://user-images.githubusercontent.com/67453893/91927264-065b5880-ed14-11ea-8c93-fe8b68396363.png)
@@ -97,7 +97,7 @@
     - 도메인 서열 분리 
         - Core Domain:  검진관리 : 없어서는 안될 핵심 서비스이며, 연견 Up-time SLA 수준을 99.999% 목표, 배포주기는  1주일 1회 미만
         - Supporting Domain:   병원관리 : 경쟁력을 내기위한 서비스이며, SLA 수준은 연간 80% 이상 uptime 목표, 배포주기는 각 팀의 자율이나 표준 스프린트 주기가 1주일 이므로 1주일 1회 이상을 기준으로 함.
-        - General Domain:   예약관리 : 단순 이력을 관리하기 위한 서비스
+        - General Domain:   예약관리 : 단순 이력을 관리하기 위한 서비스, (NEW) 사전문진관리 : 사전문진표를 전송, 향후 외부시스템으로 
 
 ### 폴리시 부착 (괄호는 수행주체, 폴리시 부착을 둘째단계에서 해놔도 상관 없음. 전체 연계가 초기에 드러남)
 
@@ -151,7 +151,7 @@
 | Hospital | 병원 관리 | 8082 | http://localhost:8082/hospitals | http://HospitalManage:8080/hospitals |
 | Reservation | 예약 관리 | 8083 | http://localhost:8083/reservations | http://ReservationManage:8080/reservations |
 | MyPage | my page | 8084 | http://localhost:8084/myPages | http://MyPage:8080/myPages |
-| PreQuestion | 사전문진표 발송 | 8085 | http://localhost:8085/preQuestion | http://MyPage:8080/preQuestion |
+| PreQuestion | 사전문진표 발송 | 8085 | http://localhost:8085/preQuestion | http://PreQuestion:8080/preQuestion |
 
 
 
