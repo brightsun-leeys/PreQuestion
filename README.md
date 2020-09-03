@@ -69,11 +69,11 @@
   ![1](https://user-images.githubusercontent.com/67453893/91927140-baa8af00-ed13-11ea-8ead-0d4616a6da56.png)
 
 ## TO-BE 조직 (Vertically-Aligned)
-  ![2](https://user-images.githubusercontent.com/67453893/91927149-bda39f80-ed13-11ea-90df-6a488d0d0210.png)
+![그림1](https://user-images.githubusercontent.com/67453893/92060798-a2966580-edcf-11ea-8a0c-448c4d1dc3c4.png)
 
 ## Event Storming 결과
 
-![eventstorming](https://user-images.githubusercontent.com/67453893/91924624-2ee05400-ed0e-11ea-8221-b47b547f9dd9.png)
+![그림2](https://user-images.githubusercontent.com/67453893/92060804-a629ec80-edcf-11ea-8bd9-11408105abf6.png)
 
 ### 이벤트 도출
 ![그림2](https://user-images.githubusercontent.com/67453893/91927264-065b5880-ed14-11ea-8c93-fe8b68396363.png)
@@ -124,7 +124,7 @@
 ## 헥사고날 아키텍처 다이어그램 도출
 
 * CQRS 를 위한 Mypage 서비스만 DB를 구분하여 적용
-![kafka](https://user-images.githubusercontent.com/67453893/91807070-1cf7a600-ec67-11ea-9e5e-f085f5904d5b.png)
+![그림3](https://user-images.githubusercontent.com/67453893/92060809-a7f3b000-edcf-11ea-805d-55a1bcc848e0.png)
 
 
 # 구현
@@ -134,7 +134,7 @@
 | 기능 | 이벤트 Payload |
 |---|:---:|
 | 1.관리자가 병원 정보( 병원이름, 예약일, 가능인원수)를 등록한다. |![image](https://user-images.githubusercontent.com/25805562/91837451-3577b880-ec87-11ea-88b1-dc4e9d74790d.png)|
-| 2.고객이 건강검진을 예약을 요청한다. </br>3.해당 병원의 검진가능 인원이 감소한다. (Sync)</br>4.예약 완료로 변경된다. (Async)</br>5.예약관리의 해당 내역의 상태가 등록된다. |![image](https://user-images.githubusercontent.com/25805562/91837806-7a035400-ec87-11ea-8966-09403bd5e7eb.png)|
+| 2.고객이 건강검진을 예약을 요청한다. </br>3.해당 병원의 검진가능 인원이 감소한다. (Sync)</br>4.예약 완료로 변경된다. (Async)</br>5.예약관리의 해당 내역의 상태가 등록된다.</br>(신규) 13.고객 예약 완료시, 사전문진표를 발송한다. |![image](https://user-images.githubusercontent.com/25805562/91837806-7a035400-ec87-11ea-8966-09403bd5e7eb.png)</br></br>![그림4](https://user-images.githubusercontent.com/67453893/92061046-48e26b00-edd0-11ea-9f91-89537cf86d31.png) |
 | 6.고객이 건강검진 예약을 취소한다.</br>7.취소 시, 병원의 검진가능 인원이 증가한다. (Async)</br>8.예약관리의 해당 내역의 상태가 예약 취소로 변경된다. | ![image](https://user-images.githubusercontent.com/25805562/91837990-c2227680-ec87-11ea-9fb1-530410922532.png) |
 | 9.관리자가 병원 정보를 삭제한다.</br>10.해당 병원에 예약한 예약자의 상태를 예약 강제 취소 변경한다. (Async)</br>11.예약관리의 해당 내역의 상태가 예약 강제 취소로 변경된다. | ![image](https://user-images.githubusercontent.com/25805562/91838119-f007bb00-ec87-11ea-9edd-38d9963f9ee0.png) | 
 | 12.건강검진 예약내역 상태를 조회한다.| ![image](https://user-images.githubusercontent.com/25805562/91838415-6ad0d600-ec88-11ea-9df8-1c6895fe6d75.png) |
