@@ -783,3 +783,90 @@ Containers:
 ```
 kubectl describe 명령으로 컨테이너에 configMap 적용여부를 알 수 있다. 
 
+## livenessProbe 설정
+* buildspec.yaml
+```
+                  livenessProbe:
+                    exec:
+                      command:
+                      - cat
+                      - /tmp/a.txt
+                    failureThreshold: 1
+                    initialDelaySeconds: 60
+                    periodSeconds: 5
+                    successThreshold: 1
+                    timeoutSeconds: 1
+```
+
+* livenessProbe 체크 파일 설정
+```
+root@labs--1864180482:/home/project# kubectl exec -it pod/prequestion-6b85bccf66-ph4cg -n skcc-ns -- /bin/sh
+/ # touch /tmp/a.txt
+/ # ll /tmp
+/bin/sh: ll: not found
+/ # ls /tmp
+a.txt                                                        tomcat-docbase.1638896265197407340.8080
+hsperfdata_root                                              tomcat.4301478843853089841.8080
+kafka-client-jaas-config-placeholder7952035848420458531conf
+``` 
+
+* discribe 확인
+root@labs--1864180482:/home/project# kubectl describe po pod/prequestion-6b85bccf66-ph4cg -n skcc-ns
+error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
+root@labs--1864180482:/home/project# kubectl describe pod/prequestion-6b85bccf66-ph4cg -n skcc-ns
+Name:           prequestion-6b85bccf66-ph4cg
+Namespace:      skcc-ns
+Priority:       0
+Node:           ip-192-168-19-116.ec2.internal/192.168.19.116
+Start Time:     Thu, 03 Sep 2020 02:49:32 +0000
+Labels:         app=prequestion
+                pod-template-hash=6b85bccf66
+Annotations:    kubernetes.io/psp: eks.privileged
+Status:         Running
+IP:             192.168.25.224
+IPs:            <none>
+Controlled By:  ReplicaSet/prequestion-6b85bccf66
+Containers:
+  prequestion:
+    Container ID:   docker://5b0ab394e1796e1709c34f3e9b2a8da3e91d5de967c406921985f0e2e6490108
+    Image:          052937454741.dkr.ecr.us-east-1.amazonaws.com/user21-prequestion-repo:8d73499c4b4ebb0fd6686236e4c87aee8ab0891d
+    Image ID:       docker-pullable://052937454741.dkr.ecr.us-east-1.amazonaws.com/user21-prequestion-repo@sha256:193f5d9f86b2d89753793327a6f5afd8d64e0a16a5633e385caa9c63fea301ac
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 03 Sep 2020 02:52:47 +0000
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    143
+      Started:      Thu, 03 Sep 2020 02:51:42 +0000
+      Finished:     Thu, 03 Sep 2020 02:52:46 +0000
+    Ready:          True
+    Restart Count:  3
+```
+    Liveness:       exec [cat /tmp/a.txt] delay=60s timeout=1s period=5s #success=1 #failure=1
+```
+    Readiness:      http-get http://:8080/actuator/health delay=30s timeout=2s period=5s #success=1 #failure=10
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-88cm2 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-88cm2:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-88cm2
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:          <none>
+
+* kubectl get all -n skcc-ns
+```
+pod/prequestion-6b85bccf66-ph4cg               1/1     Running   3          69m
+```
