@@ -811,6 +811,7 @@ kafka-client-jaas-config-placeholder7952035848420458531conf
 ``` 
 
 * discribe 확인
+```
 root@labs--1864180482:/home/project# kubectl describe po pod/prequestion-6b85bccf66-ph4cg -n skcc-ns
 error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
 root@labs--1864180482:/home/project# kubectl describe pod/prequestion-6b85bccf66-ph4cg -n skcc-ns
@@ -842,9 +843,7 @@ Containers:
       Finished:     Thu, 03 Sep 2020 02:52:46 +0000
     Ready:          True
     Restart Count:  3
-```
     Liveness:       exec [cat /tmp/a.txt] delay=60s timeout=1s period=5s #success=1 #failure=1
-```
     Readiness:      http-get http://:8080/actuator/health delay=30s timeout=2s period=5s #success=1 #failure=10
     Environment:    <none>
     Mounts:
@@ -865,6 +864,7 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:          <none>
+```
 
 * kubectl get all -n skcc-ns
 ```
