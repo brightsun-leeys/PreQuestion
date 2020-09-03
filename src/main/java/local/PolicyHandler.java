@@ -48,6 +48,10 @@ public class PolicyHandler{
             temp.setQuestionMsg(reservationCompleted.getCustNm()+"님, 사전문진표 발송 !!!");
             preQuestionRepository.save(temp);
 
+            PreQuestionSent preQuestionSent = new PreQuestionSent();
+            BeanUtils.copyProperties(this, preQuestionSent);
+            preQuestionSent.publishAfterCommit();
+
         }
     }
     /*@StreamListener(KafkaProcessor.INPUT)
