@@ -83,6 +83,12 @@ phases:
                   image: $AWS_ACCOUNT_ID.dkr.ecr.$_AWS_REGION.amazonaws.com/$_ECR_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION
                   ports:
                     - containerPort: 8080
+                  env:
+                    - name: api.hospital.url
+                      valueFrom:
+                        configMapKeyRef:
+                          name: my-config
+                          key: api.hospital.url
                   imagePullPolicy: Always
                   resources:
                     limits:
