@@ -8,9 +8,8 @@
  1. 예약관리 : https://github.com/byounghoonmoon/ReservationManage.git >>(Fork)>>>>  https://github.com/brightsun-leeys/ReservationManage.git
  1. 마이페이지 : https://github.com/byounghoonmoon/MyPage.git          >>(Fork)>>>>  https://github.com/brightsun-leeys/MyPage.git
  1. 게이트웨이 : https://github.com/byounghoonmoon/gateway.git         >>(Fork)>>>>  https://github.com/brightsun-leeys/gateway.git
- 1. (NEW) 사전문진표 발송
- ```diff
- + https://github.com/brightsun-leeys/PreQuestion.git
+ ```html
+<font color="green"> 1. (NEW) 사전문진표 발송 : https://github.com/brightsun-leeys/PreQuestion.git </font>
  ```
 3조 건강검진 예약 서비스 CNA개발 실습을 위한 프로젝트
 
