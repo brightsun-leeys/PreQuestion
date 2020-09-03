@@ -1,6 +1,7 @@
 package local;
 
 import local.config.kafka.KafkaProcessor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -26,12 +27,27 @@ public class PolicyHandler{
         if(reservationCompleted.isMe()){
             //  예약 확정으로 인한 사전 문진표 발송
             System.out.println("##### 예약 확정으로 인한 사전 문진표 발송: " + reservationCompleted.toJson());
+            if (reservationCompleted.getCustNm().equals("TEST")) {
+                Canceled canceled = new Canceled();
+                BeanUtils.copyProperties(this, canceled);
+                canceled.publishAfterCommit();
+            }
+
+            // 동기식 테스트를 위해서 기존에 있는 호출을 그대로 이용
+            // 검진 요청함 ( Req / Res : 동기 방식 호출)
+            local.external.Hospital hospital = new local.external.Hospital();
+            hospital.setHospitalId( hospital.getHospitalId() );
+            // mappings goes here
+            PreQuestionApplication.applicationContext.getBean(local.external.HospitalService.class)
+                    .screeningRequest(hospital.getHospitalId(),hospital);
+
             PreQuestion temp = new PreQuestion();
             temp.setScreeningId(reservationCompleted.getId());
             temp.setStatus("REQUEST_COMPLETED");
             temp.setCustNm(reservationCompleted.getCustNm());
             temp.setQuestionMsg(reservationCompleted.getCustNm()+"님, 사전문진표 발송 !!!");
             preQuestionRepository.save(temp);
+
         }
     }
     /*@StreamListener(KafkaProcessor.INPUT)
