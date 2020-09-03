@@ -151,7 +151,7 @@
 | Hospital | 병원 관리 | 8082 | http://localhost:8082/hospitals | http://HospitalManage:8080/hospitals |
 | Reservation | 예약 관리 | 8083 | http://localhost:8083/reservations | http://ReservationManage:8080/reservations |
 | MyPage | my page | 8084 | http://localhost:8084/myPages | http://MyPage:8080/myPages |
-| reQuestion | 사전문진표 발송 | 8085 | http://localhost:8085/preQuestion | http://MyPage:8080/preQuestion |
+| PreQuestion | 사전문진표 발송 | 8085 | http://localhost:8085/preQuestion | http://MyPage:8080/preQuestion |
 
 
 
@@ -181,9 +181,8 @@ spring:
             - Path= /myPages/**
 
 (아래와 같이 변경)
-![그림6](https://user-images.githubusercontent.com/67453893/92062445-ba6fe880-edd3-11ea-8755-17d7e39dce85.png)
 ```
-
+![그림6](https://user-images.githubusercontent.com/67453893/92062445-ba6fe880-edd3-11ea-8755-17d7e39dce85.png)
 
 ## 폴리글랏 퍼시스턴스
 
