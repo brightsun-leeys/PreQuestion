@@ -1,6 +1,4 @@
-# 4th-team3-health-screening + 개인 micro service 추가 (PreQuestion)
-
-# screeningReservation (건강검진 예약 서비스)
+# 4th-team3-health-screening (건강검진 예약 서비스) + 개인 micro service 추가 (사전문진표발송)
 
 # repo
  1. 병원관리 : https://github.com/byounghoonmoon/HospitalManage.git    >>(Fork)>>>>  https://github.com/brightsun-leeys/HospitalManage.git
@@ -8,11 +6,10 @@
  1. 예약관리 : https://github.com/byounghoonmoon/ReservationManage.git >>(Fork)>>>>  https://github.com/brightsun-leeys/ReservationManage.git
  1. 마이페이지 : https://github.com/byounghoonmoon/MyPage.git          >>(Fork)>>>>  https://github.com/brightsun-leeys/MyPage.git
  1. 게이트웨이 : https://github.com/byounghoonmoon/gateway.git         >>(Fork)>>>>  https://github.com/brightsun-leeys/gateway.git
- ```html
-<font color="green"> 1. (NEW) 사전문진표 발송 : https://github.com/brightsun-leeys/PreQuestion.git </font>
+ ```diff
+ + 6. (NEW) 사전문진표 발송 : https://github.com/brightsun-leeys/PreQuestion.git
  ```
-3조 건강검진 예약 서비스 CNA개발 실습을 위한 프로젝트
-
+ 
 # Table of contents
 
 - [서비스 시나리오](#서비스-시나리오)
