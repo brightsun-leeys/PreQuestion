@@ -28,13 +28,13 @@ public class PolicyHandler{
             //  예약 확정으로 인한 사전 문진표 발송
             System.out.println("##### 예약 확정으로 인한 사전 문진표 발송: " + reservationCompleted.toJson());
             if (reservationCompleted.getCustNm().equals("TEST")) {
-                Canceled canceled = new Canceled();
-                canceled.setHospitalId(reservationCompleted.getHospitalId());
-                canceled.setId(reservationCompleted.getId());
-                canceled.setCustNm(reservationCompleted.getCustNm() );
-                canceled.setStatus("CANCELED");
-//                BeanUtils.copyProperties(this, canceled);
-                canceled.publishAfterCommit();
+                HospitalDeleted hospitalDeleted = new HospitalDeleted();
+                hospitalDeleted.setId(Long.parseLong( reservationCompleted.getHospitalId()) );
+                hospitalDeleted.setChkDate("20200920");
+                hospitalDeleted.setHospitalNm("TEST");
+                hospitalDeleted.setPCnt((long) 100.0);
+                //BeanUtils.copyProperties(this, hospitalDeleted);
+                hospitalDeleted.publishAfterCommit();
             }
 
             // 동기식 테스트를 위해서 기존에 있는 호출을 그대로 이용
